@@ -3,10 +3,6 @@ import { ButtonContainer } from './style';
 import Button from '../../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 
-//   bgColor={props.bgColor}
-//   color={props.fontColor}
-//   borderColor={props.borderColor}
-//   onClick={props.onClickhandler}
 const LoginButton = (props) => {
   //   const navigate = useNavigate();
   const handleLoginButtonClick = () => {

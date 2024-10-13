@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from 'react';
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Layout from './layout/Layout';
+import Regist from './pages/Auth/Regist';
+import Home from './pages/Home/Home';
+import QnaHome from './pages/Qna/QnaHome';
+import QnaDetail from './pages/Qna/QnaDetail';
+import RegistProject from './pages/Regist/RegistProject';
+import RequestHome from './pages/Request/RequestHome';
+import RequestDetail from './pages/Request/RequestDetail';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  useEffect(() => {
+    console.log('너는 되니?');
+  }, []);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {/* Home */}
+          <Route index element={<Navigate to="/home" />} />{' '}
+          {/* 기본 경로 리다이렉션 */}
+          <Route path="/home" element={<Home />} />
+          {/* Qna */}
+          <Route path="qna" element={<QnaHome />} />
+          <Route path="qna/:qnaId" element={<QnaDetail />} />
+          {/* Project */}
+          <Route path="project" element={<RequestHome />} />
+          <Route path="project/:requestId" element={<RequestDetail />} />
+          <Route path="project/regist" element={<RegistProject />} />
+        </Route>
+        {/* User Regist */}
+        <Route path="/regist" element={<Regist />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

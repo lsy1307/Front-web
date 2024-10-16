@@ -14,6 +14,8 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
+  width: 100%;
+  height: 100%;
   padding-top: ${(props) => props.headerHeight}rem;
 `;
 
@@ -29,9 +31,9 @@ const Layout = () => {
       }
     };
     setHeight();
-    window.addEventListener('resize', setHeaderHeight);
+    window.addEventListener('resize', setHeight);
     return () => {
-      window.removeEventListener('resize', setHeaderHeight);
+      window.removeEventListener('resize', setHeight);
     };
   }, [headerRef]);
   return (

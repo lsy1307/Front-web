@@ -9,17 +9,27 @@ import QnaDetail from './pages/Qna/QnaDetail';
 import RegistProject from './pages/Regist/RegistProject';
 import RequestHome from './pages/Request/RequestHome';
 import RequestDetail from './pages/Request/RequestDetail';
+import Callback from './auth/Callback';
+import axios from 'axios';
 
 function App() {
   useEffect(() => {
-    console.log('너는 되니?');
+    const getT = async () => {
+      try {
+        const res = await axios.get('http://125.132.216.190:15530/login');
+        console.log(res);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    getT();
   }, []);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Home */}
-          <Route index element={<Navigate to="/home" />} />{' '}
+          <Route index element={<Navigate to="/home" />} />
           {/* 기본 경로 리다이렉션 */}
           <Route path="/home" element={<Home />} />
           {/* Qna */}
@@ -32,6 +42,7 @@ function App() {
         </Route>
         {/* User Regist */}
         <Route path="/regist" element={<Regist />} />
+        <Route path="/callback" element={<Callback />} />
       </Routes>
     </BrowserRouter>
   );

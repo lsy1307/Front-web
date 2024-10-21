@@ -7,13 +7,13 @@ import {
 } from './style';
 import MenuList from '../../MenuList/MenuList';
 
-const MainComponent = () => {
+const MainComponent = ({ contents }) => {
   return (
     <Container>
       <LeftContainer>
         <MenuList />
       </LeftContainer>
-      <MiddleContainer></MiddleContainer>
+      <MiddleContainer>{contents}</MiddleContainer>
       <RightContainer></RightContainer>
     </Container>
   );

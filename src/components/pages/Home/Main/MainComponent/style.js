@@ -17,8 +17,9 @@ export const LeftContainer = styled.div`
 export const MiddleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5rem 2rem 5rem 2rem;
+  padding: 0.5rem 0.2rem 0.5rem 0.5rem;
   width: 50%;
+  gap: 5rem;
 `;
 
 export const RightContainer = styled.div`

@@ -15,6 +15,7 @@ export const Container = styled.div`
   z-index: 1000;
   border-top: 3px solid #e7700d;
   border-bottom: 1px solid #d6d9dc;
+  background-color: #fff;
 `;
 
 export const TitleButton = styled.button`

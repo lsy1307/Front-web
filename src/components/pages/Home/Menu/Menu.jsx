@@ -4,7 +4,7 @@ import { Container, Icon, MenuText } from './style';
 
 const Menu = (props) => {
   return (
-    <Container>
+    <Container to={props.link}>
       <Icon src={props.icon} alt="이미지 로드 중" />
       <MenuText>{props.text}</MenuText>
     </Container>

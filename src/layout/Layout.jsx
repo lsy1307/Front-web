@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,8 @@ const Container = styled.div`
 const Content = styled.div`
   width: 100%;
   height: 100%;
-  padding-top: ${(props) => props.headerHeight}rem;
+  margin-top: ${(props) => props.headerHeight}rem;
+  padding-bottom: 10rem;
 `;
 
 const Layout = () => {

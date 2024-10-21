@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const SearchContainer = styled.div`
-  width: 70%;
+  width: 60%;
   height: 2.0625rem;
   display: flex;
   flex-direction: row;

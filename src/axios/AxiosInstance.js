@@ -5,12 +5,11 @@ const axiosInstance = axios.create({ baseURL: import.meta.env.VITE_BASE_URL });
 
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const accessToken = localStorage.getItem('token');
+    const accessToken = localStorage.getItem('accessToken');
 
     if (!accessToken) {
-      // 토큰이 없을 경우 로그아웃 처리
       localStorage.clear();
-      window.location.href = '/login';
+      window.location.href = '/home';
       throw new Error('토큰 없음');
     }
 
@@ -31,14 +30,15 @@ axiosInstance.interceptors.response.use(
 
   async (error) => {
     // 토큰 만료나 잘못된 토큰일 때 로그아웃 처리
-    if (error.response?.data?.code === 'AUTH_001') {
+    if (error.response?.data?.status === '449') {
       console.log('잘못된 토큰');
       const originalConfig = error.config;
       try {
-        const refresh = localStorage.getItem('refresh');
-        const res = await getRefresh(refresh);
-        localStorage.setItem('token', res.data.token);
-        originalConfig.headers['Authorization'] = `Bearer ${res.data.token}`;
+        const refresh = localStorage.getItem('refreshToken');
+        localStorage.clear();
+        await getRefresh(refresh);
+        const token = localStorage.getItem('accessToken');
+        originalConfig.headers['Authorization'] = `Bearer ${token}`;
         return axiosInstance(originalConfig);
       } catch (e) {
         console.error(e);

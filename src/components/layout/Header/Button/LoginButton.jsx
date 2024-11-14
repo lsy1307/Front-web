@@ -8,7 +8,7 @@ import useStore from '../../../../zustand/Store';
 const LoginButton = (props) => {
   const navigate = useNavigate();
 
-  const { isLogin } = useStore();
+  const { isLogin, setIsLogin } = useStore();
 
   return (
     <ButtonContainer>
@@ -21,7 +21,13 @@ const LoginButton = (props) => {
           text="Log in"
         />
       ) : (
-        <Button onClickHandler={() => localStorage.clear()} text="Log out" />
+        <Button
+          onClickHandler={() => {
+            localStorage.clear();
+            setIsLogin(false);
+          }}
+          text="Log out"
+        />
       )}
     </ButtonContainer>
   );
